@@ -13,8 +13,8 @@ public class NRainhas {
         System.out.print("Digite o valor de N: ");
         int n = scanner.nextInt();
 
-        if (n < 2) {
-            System.out.println("N deve ser menor ou igual a 2.");
+        if (n >= 2) {
+            System.out.println("N deve ser maior ou igual a 2.");
             return;
         }
 
