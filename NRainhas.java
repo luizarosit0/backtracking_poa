@@ -14,7 +14,7 @@ public class NRainhas {
         int n = scanner.nextInt();
 
         if (n < 2) {
-            System.out.println("N deve ser menor ou igual a 2.");
+            System.out.println("Não deve ser menor que 2.");
             return;
         }
 
