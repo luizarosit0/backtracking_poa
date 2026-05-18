@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class NRainhas {
 
@@ -24,6 +22,7 @@ public class NRainhas {
 
         if (n < 2) {
             System.out.println("Não deve ser menor que 2.");
+            scanner.close();
             return;
         }
 
@@ -69,6 +68,8 @@ public class NRainhas {
         System.out.println("\nIterações: " + iteracoesTodos);
         System.out.println("Instruções aproximadas: " + instrucoesTodos);
         System.out.println("Tempo: " + (tempoFim - tempoInicio) + " ns");
+
+        scanner.close();
     }
 
     // Parte 1: encontra apenas uma solução
