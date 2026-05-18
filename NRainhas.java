@@ -7,6 +7,15 @@ public class NRainhas {
     // Conta quantas soluções foram encontradas
     static int totalSolucoes = 0;
 
+    static long iteracoesPrimeira = 0;
+    static long iteracoesTodos = 0;
+
+    static long instrucoesPrimeira = 0;
+    static long instrucoesTodos = 0;
+
+    static long tempoInicio = 0;
+    static long tempoFim = 0;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -26,6 +35,8 @@ public class NRainhas {
             tabuleiro[i] = -1;
         }
 
+        tempoInicio = System.nanoTime();
+
         System.out.println("\n=== UMA SOLUÇÃO ===");
 
         if (resolverUmaSolucao(tabuleiro, 0, n)) {
@@ -33,6 +44,12 @@ public class NRainhas {
         } else {
             System.out.println("Não existe solução para N = " + n);
         }
+
+        tempoFim = System.nanoTime();
+
+        System.out.println("\nIterações: " + iteracoesPrimeira);
+        System.out.println("Instruções aproximadas: " + instrucoesPrimeira);
+        System.out.println("Tempo: " + (tempoFim - tempoInicio) + " ns");
 
         System.out.println("\n=== TODAS AS SOLUÇÕES ===");
 
@@ -42,9 +59,16 @@ public class NRainhas {
             tabuleiro[i] = -1;
         }
 
+        tempoInicio = System.nanoTime();
+
         resolverTodasSolucoes(tabuleiro, 0, n);
 
+        tempoFim = System.nanoTime();
+
         System.out.println("Total de soluções encontradas: " + totalSolucoes);
+        System.out.println("\nIterações: " + iteracoesTodos);
+        System.out.println("Instruções aproximadas: " + instrucoesTodos);
+        System.out.println("Tempo: " + (tempoFim - tempoInicio) + " ns");
     }
 
     // Parte 1: encontra apenas uma solução
@@ -58,6 +82,9 @@ public class NRainhas {
 
         // Tenta colocar uma rainha em cada coluna da linha atual
         for (int coluna = 0; coluna < n; coluna++) {
+
+            iteracoesPrimeira++;
+            instrucoesPrimeira += 3;
 
             // Verifica se é seguro colocar a rainha nessa posição
             if (posicaoSegura(tabuleiro, linha, coluna)) {
@@ -92,6 +119,9 @@ public class NRainhas {
 
         // Tenta todas as colunas da linha atual
         for (int coluna = 0; coluna < n; coluna++) {
+
+            iteracoesTodos++;
+            instrucoesTodos += 3;
 
             if (posicaoSegura(tabuleiro, linha, coluna)) {
 
